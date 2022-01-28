@@ -29,14 +29,15 @@ public class Quadratic
         
         for(;;)
         {
+            double a = 0.0, b = 0.0 , c = 0.0;
+            String Prompt, A, B, C;
+            
             if(args.length < 3)
             {
                 System.out.println("To few parameters supplied for direct command line invokation\nUsage:-\njava -jar quadratic.jar A B C\n(Where A, B, and C are the co-efficients)\n");
                 
                 System.out.println("Equation parameters required please :-\n(General form of a quadratic equation is 'Ax^2 + Bx + C = 0')\n");
                 
-                Scanner UserInput = new Scanner(System.in);
-                String Prompt, a = "", b = "", c = "";
                 for(int counter = 0; counter < 3; counter++)
                 {
                     switch(counter)
@@ -45,7 +46,8 @@ public class Quadratic
                         {
                             Prompt = "A = ? (ENETR for zero)";
                             System.out.println(Prompt);
-                            a = UserInput.nextLine(); 
+                            Scanner UserInput = new Scanner(System.in);
+                            a = UserInput.nextDouble();
                             
                             break;
                             
@@ -55,7 +57,8 @@ public class Quadratic
                         {
                             Prompt = "B = ? (ENETR for zero)";
                             System.out.println(Prompt);
-                            b = UserInput.nextLine(); 
+                            Scanner UserInput = new Scanner(System.in);
+                            b = UserInput.nextDouble();
                             
                             break;
                             
@@ -65,7 +68,8 @@ public class Quadratic
                         {
                             Prompt = "C = ? (ENETR for zero)";
                             System.out.println(Prompt);
-                            c = UserInput.nextLine(); 
+                            Scanner UserInput = new Scanner(System.in);
+                            c = UserInput.nextDouble();
                             
                             break;
                             
@@ -84,13 +88,8 @@ public class Quadratic
                 
                 System.out.println("Parameters look good, processing\n");
                 System.out.println("Extracting parameters...\n");
-                
-                double A, B, C;
-                A = Double.parseDouble(a);
-                B = Double.parseDouble(b);
-                C = Double.parseDouble(c);
-                
-                ProcessEquation(A, B, C);            
+                       
+                ProcessEquation(a, b, c);            
                 
             }
             else if(args.length > 3)
@@ -99,31 +98,42 @@ public class Quadratic
             }
             else
             {
-                System.out.println("Parameters look good, processing\n");
+                System.out.println("\nParameters look good, processing");
                 System.out.println("Extracting parameters...\n");
                 
-                double A, B, C;
-                A = Double.parseDouble(args[0]);
-                B = Double.parseDouble(args[1]);
-                C = Double.parseDouble(args[2]);
+                A = args[0].toString();
+                B = args[1].toString();
+                C = args[2].toString();
                 
-                ProcessEquation(A, B, C);
+                System.out.println("Equation :-");
+                System.out.println("(" + A + ").x^2 + (" + B + ").x + " + "(" + C + ")" + "\n");
+                
+                a = Double.parseDouble(A);
+                b = Double.parseDouble(B);
+                c = Double.parseDouble(C);
+                
+                ProcessEquation(a, b, c);
+                
+                System.out.println();
                           
             }
     
-            // run again?
-            // going to use a 'goto' as this qucik and simple code-base was never intended for this; shall refactor in the future!
-            System.out.println();
-            System.out.println("Run again ? (Null string for 'yes'; anything else for 'no')");
-            Scanner UserInput = new Scanner(System.in);
-            String userResponse = UserInput.nextLine();
+//            // run again?
+//            // going to use a 'goto' as this qucik and simple code-base was never intended for this; shall refactor in the future!
+//            System.out.println();
+//            System.out.println("Run again ? (Null string for 'yes'; anything else for 'no')");
+//            Scanner UserInput = new Scanner(System.in);
+//            String userResponse = UserInput.nextLine();
+//              
+//            if(userResponse.length() > 0)
+//            {
+//                break;
+//                
+//           }
+
+            // temporary hack by JHRS!
+            break;
             
-            if(userResponse.length() > 0)
-            {
-                break;
-                
-            }
-  
         }
         
     }
